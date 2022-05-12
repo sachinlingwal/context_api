@@ -1,9 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { Cart } from "./Context";
 import SingleProduct from "./SingleProduct";
 
-const Cart = (props) => {
-  const { cart, setCart } = props;
+const CartPage = (props) => {
+  // const { cart, setCart } = props;
   const [total, setTotal] = useState();
+  const { cart, setCart } = useContext(Cart);
+
   useEffect(() => {
     setTotal(cart.reduce((acc, curr) => acc + Number(curr.price), 0));
   }, [cart]);
@@ -18,8 +21,8 @@ const Cart = (props) => {
           <SingleProduct
             prod={prod}
             key={prod.id}
-            cart={cart}
-            setCart={setCart}
+            // cart={cart}
+            // setCart={setCart}
           />
         ))}
       </div>
@@ -27,4 +30,4 @@ const Cart = (props) => {
   );
 };
 
-export default Cart;
+export default CartPage;

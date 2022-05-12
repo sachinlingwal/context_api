@@ -1,5 +1,7 @@
-import React from "react";
-const SingleProduct = ({ prod, cart, setCart }) => {
+import React, { useContext } from "react";
+import { Cart } from "./Context";
+const SingleProduct = ({ prod }) => {
+  const { cart, setCart } = useContext(Cart);
   const AddItemToCart = () => {
     setCart([...cart, prod]);
   };
